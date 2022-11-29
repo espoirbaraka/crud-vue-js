@@ -1,19 +1,19 @@
 const App = {
     data(){
         return{
-            showHome: true,
+            showHome: false,
             showCreateForm: false,
-            showStudentsList: false
+            showStudentsList: true
         }
     },
     methods:{
-        goToHome: ()=>{
+        goToHome(){
             this.showHome = true
         },
-        goToStudent: ()=>{
+        goToList(){
             this.showStudentsList = true
         },
-        goToForm: ()=>{
+        goToForm(){
             this.showCreateForm = true
         }
     }
