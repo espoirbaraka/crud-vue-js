@@ -1,3 +1,12 @@
+const checkIfEmpty=(obj)=>{
+    let isEmpty = false;
+    for (const prop in obj){
+        if (obj[prop] == ""){
+            isEmpty = true;
+        }
+    }
+    return isEmpty;
+}
 const App = {
     data(){
         return{
@@ -25,8 +34,19 @@ const App = {
         goToForm(){
             this.changeNavigationState("create")
         },
-        addStudent(){
-            console.log(this.newStudent)
+        submitStudent(){
+            if (!checkIfEmpty(this.newStudent)){
+                addStudent(this.newStudent)
+                this.newStudent={
+                    nom : "",
+                    prenom: "",
+                    dateNaissance: "",
+                    niveauEtude: ""
+                }
+                console.log("Etudiant ajouté")
+            }else{
+
+            }
         },
         changeNavigationState(destinaire){
             this.showHome = false
