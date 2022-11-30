@@ -41,3 +41,20 @@ function deleteStudent(student){
     })
     updateDB(updateDb)
 }
+
+function getStudent(id){
+    const db = getLocalDB()
+    var filterDb = db.filter((data)=>data.id == id)
+    if (filterDb.length > 0){
+        return filterDb[0]
+    }
+    return null
+}
+
+function searchStudetByName(name){
+    const db = getLocalDB()
+    const filtererDb = db.filter((data)=>{
+        return data.nom.toLowerCase().includes(name.toLowerCase()) || data.prenom.toLowerCase().includes(name.toLowerCase())
+    })
+    return filtererDb
+}
