@@ -3,11 +3,17 @@ const App = {
         return{
             showHome: false,
             showCreateForm: false,
-            showStudentsList: true
+            showStudentsList: true,
+            newStudent:{
+                nom : "",
+                prenom: "",
+                dateNaissance: "",
+                niveauEtude: ""
+            }
         }
     },
     mounted(){
-        this.changeNavigationState("home")
+        this.changeNavigationState("create")
     },
     methods:{
         goToHome(){
@@ -18,6 +24,9 @@ const App = {
         },
         goToForm(){
             this.changeNavigationState("create")
+        },
+        addStudent(){
+            console.log(this.newStudent)
         },
         changeNavigationState(destinaire){
             this.showHome = false
