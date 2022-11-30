@@ -7,6 +7,24 @@ const checkIfEmpty=(obj)=>{
     }
     return isEmpty;
 }
+const showSuccessMessage = (message)=>{
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: message,
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
+
+const showErrorMessage = (message)=>{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+    })
+}
+
 const App = {
     data(){
         return{
@@ -36,16 +54,20 @@ const App = {
         },
         submitStudent(){
             if (!checkIfEmpty(this.newStudent)){
-                addStudent(this.newStudent)
-                this.newStudent={
-                    nom : "",
-                    prenom: "",
-                    dateNaissance: "",
-                    niveauEtude: ""
+                if(!checkIfStudentExist(this.newStudent.nom, this.newStudent.prenom)){
+                    addStudent(this.newStudent)
+                    this.newStudent={
+                        nom : "",
+                        prenom: "",
+                        dateNaissance: "",
+                        niveauEtude: ""
+                    }
+                    showSuccessMessage("Etudiant ajouté")
+                }else{
+                    showErrorMessage("Cet etudiant existe déjà")
                 }
-                console.log("Etudiant ajouté")
             }else{
-
+                showErrorMessage("Veuillez remplir tous les champs")
             }
         },
         changeNavigationState(destinaire){

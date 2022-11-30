@@ -53,8 +53,17 @@ function getStudent(id){
 
 function searchStudetByName(name){
     const db = getLocalDB()
-    const filtererDb = db.filter((data)=>{
+    const filterDb = db.filter((data)=>{
         return data.nom.toLowerCase().includes(name.toLowerCase()) || data.prenom.toLowerCase().includes(name.toLowerCase())
     })
-    return filtererDb
+    return filterDb
+}
+
+function checkIfStudentExist(name, firstname){
+    const db = getLocalDB()
+    const filteredDb = db.filter((data)=>{
+        return data.nom.toLowerCase() == name.toLowerCase() && data.prenom.toLowerCase() == firstname.toLowerCase()
+    })
+
+    return filteredDb.length > 0
 }
