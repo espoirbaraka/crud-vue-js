@@ -6,6 +6,9 @@ const App = {
             showStudentsList: true
         }
     },
+    mounted(){
+        this.changeNavigationState("home")
+    },
     methods:{
         goToHome(){
             this.changeNavigationState("home")
