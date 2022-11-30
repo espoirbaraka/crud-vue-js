@@ -17,3 +17,27 @@ function addStudent(student){
     db.push(student)
     updateDB(db)
 }
+
+function updateStudent(student){
+    const db = getLocalDB()
+    const updatedb = db.map(function(curStudent){
+        if (curStudent.id == student.id){
+            return{
+                nom : student.nom,
+                prenom : student.prenom,
+                dateNaissance: student.dateNaissance,
+                niveauEtude : student.niveauEtude
+            }
+        }
+        return curStudent
+    })
+    updateDB(updatedb)
+}
+
+function deleteStudent(student){
+    const db = getLocalDB()
+    const updateDb = db.filter(function (curStudent){
+        return curStudent.id != student.id;
+    })
+    updateDB(updateDb)
+}
