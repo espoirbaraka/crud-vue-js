@@ -62,7 +62,7 @@
                                 <div class="d-flex mb-2">
                                     <h5 class="card-title flex-grow-1">Formulaire de création de nouvel étudiant</h5>
                                 </div>
-                                <form class="row g-3" @submit.prevent="addStudent()">
+                                <form class="row g-3" @submit.prevent="submitStudent()">
                                     <div class="col-6">
                                         <label for="inputName" class="form-label">Nom(s)</label>
                                         <input v-model="newStudent.nom" required type="text" class="form-control" id="inputName">
