@@ -8,13 +8,33 @@ const App = {
     },
     methods:{
         goToHome(){
-            this.showHome = true
+            this.changeNavigationState("home")
         },
         goToList(){
-            this.showStudentsList = true
+            this.changeNavigationState("student")
         },
         goToForm(){
-            this.showCreateForm = true
+            this.changeNavigationState("create")
+        },
+        changeNavigationState(destinaire){
+            this.showHome = false
+            this.showCreateForm = false
+            this.showStudentsList = false
+
+            switch (destinaire) {
+                case "home" :
+                    this.showHome = true
+                    break;
+                case "create" :
+                    this.showCreateForm = true
+                    break;
+                case "student" :
+                    this.showStudentsList = true
+                    break;
+                default:
+                    this.showHome=true
+                    break;
+            }
         }
     }
 }
